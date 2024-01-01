@@ -83,7 +83,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@types/react": "^18.2.43",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -96,5 +96,9 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.1.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "extends": [
+    "eslint:recommended",
+    "next"
+  ]
 }
