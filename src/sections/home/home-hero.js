@@ -197,7 +197,7 @@ export default function HomeHero() {
             repeat: Infinity,
           }}
         >
-          Minimal
+          BibleNote
         </StyledTextGradient>
       </m.div>
 
@@ -237,7 +237,7 @@ export default function HomeHero() {
               variant="contained"
               startIcon={<Iconify icon="eva:flash-fill" width={24} />}
             >
-              Live Preview
+              Login
             </Button>
 
             <Link

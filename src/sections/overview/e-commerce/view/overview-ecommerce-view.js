@@ -17,6 +17,7 @@ import {
 
 import { useSettingsContext } from 'src/components/settings';
 
+import SearchBar from '../BibleText-SearchBar';
 import EcommerceWelcome from '../ecommerce-welcome';
 import EcommerceNewProducts from '../ecommerce-new-products';
 import EcommerceYearlySales from '../ecommerce-yearly-sales';
@@ -26,7 +27,6 @@ import EcommerceSalesOverview from '../ecommerce-sales-overview';
 import EcommerceWidgetSummary from '../ecommerce-widget-summary';
 import EcommerceLatestProducts from '../ecommerce-latest-products';
 import EcommerceCurrentBalance from '../ecommerce-current-balance';
-
 // ----------------------------------------------------------------------
 
 export default function OverviewEcommerceView() {
@@ -40,6 +40,7 @@ export default function OverviewEcommerceView() {
     <Container maxWidth={settings.themeStretch ? false : 'xl'}>
       <Grid container spacing={3}>
         <Grid xs={12} md={8}>
+          <SearchBar/>
           <EcommerceWelcome
             title={`Congratulations! \n ${user?.displayName}`}
             description="Best seller of the month You have done 57.6% more sales today."
