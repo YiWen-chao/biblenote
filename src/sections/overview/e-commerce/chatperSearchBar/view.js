@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-import FetchBibleText from './fetchBIbleText';
-import BibleBookInfo from './data/BibleBookInfo';
+import FetchBibleText from './fetchChapter';
+import BibleBookInfo from '../data/BibleBookInfo';
 
 export default function FreeSolo() {
     const [chaptersArr,setChaptersArr]   =  React.useState([]); 
@@ -19,7 +19,8 @@ export default function FreeSolo() {
   
    
   return (
-    <Stack spacing={2} sx={{ width: 300 }}>
+    <Stack spacing={2}>
+      {/* sx={{ width: 300 }} */}
       <Autocomplete
         id="Book"
         freeSolo
