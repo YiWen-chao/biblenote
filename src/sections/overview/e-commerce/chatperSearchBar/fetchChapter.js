@@ -1,13 +1,15 @@
 import * as React from 'react';
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import InitialReadingLayout from './initialReadingLayout';
 
 const YourComponent = (props) => {
+  console.log(props);
   const PropsData = props;
   const VerseRequest = `${PropsData.verseRequest.book.val}_${PropsData.verseRequest.label}`;
   const [ChapterTextArr,setChapterTextArr] = React.useState([]); 
-  const sendRequest = async () => {
+  
+  useEffect(() => {const sendRequest = async () => {
     const method = 'GET';
     const base = 'https://2u7hjn3p4m.execute-api.ap-southeast-2.amazonaws.com/Test/BibleData';
     const queryParams = `Method=QueryItems&PK=${  encodeURIComponent(VerseRequest)}`;
@@ -24,9 +26,7 @@ const YourComponent = (props) => {
 
       if (response.ok) {
         const responseData = await response.text();
-      
         setChapterTextArr(JSON.parse(responseData).Items.map((item)=>item.Text.S));
-    
         
       } else {
         console.error('Error:', response.status, response.statusText);
@@ -36,10 +36,8 @@ const YourComponent = (props) => {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    sendRequest();
-  });// ,[]
+  sendRequest();
+}, [VerseRequest]); 
 
   return (
      <InitialReadingLayout chapterText={ChapterTextArr}/>

@@ -10,14 +10,16 @@ import BibleBookInfo from '../data/BibleBookInfo';
 
 export default function FreeSolo() {
     const [chaptersArr,setChaptersArr]   =  React.useState([]); 
-    
-    const [verseRequest,setVerseRequest]=  React.useState([]); 
-    const [showFetchBibleText, setShowFetchBibleText] = React.useState(false);
+    const [verseRequest,setVerseRequest]=  React.useState([]);  
+    const [ifShowBibleText,setIfShowBibleText]=  React.useState(false); 
+    let tempVerseRequest;
+
     const handleButtonClick = () => {
-      setShowFetchBibleText(true);
+      setIfShowBibleText(true);
+      setVerseRequest(tempVerseRequest);
     };
   
-   
+  
   return (
     <Stack spacing={2}>
       {/* sx={{ width: 300 }} */}
@@ -27,7 +29,7 @@ export default function FreeSolo() {
         options={BibleBookInfo.map((option) => option)}
         renderInput={(params) => <TextField {...params} label="書卷" />}
         onChange={(event, newValue) => {
-          setShowFetchBibleText(false);
+
            const temChaptArr =[];
             for(let i= 1; i<=newValue.totalChapt;i+=1){
                 temChaptArr.push({label:i.toString(),book:newValue});
@@ -53,8 +55,8 @@ export default function FreeSolo() {
           />
         )}
         onChange={(event, newValue) => {
-          setShowFetchBibleText(false);
-          setVerseRequest(newValue)
+         
+          tempVerseRequest = newValue;
         }}
       />
       <Button 
@@ -64,7 +66,8 @@ export default function FreeSolo() {
       >
           查詢
         </Button>
-        {showFetchBibleText && <FetchBibleText verseRequest={verseRequest} />}
+        {ifShowBibleText &&<FetchBibleText verseRequest={verseRequest}/>}
+     
     </Stack>
   );
 }
